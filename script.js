@@ -80,6 +80,16 @@ async function sendMessage() {
 
 sendButton.addEventListener("click", sendMessage);
 
+const newChatButton = document.querySelector(".new-chat");
+
+newChatButton.addEventListener("click", () => {
+    messages.innerHTML = "";
+    input.value = "";
+    input.disabled = false;
+    sendButton.disabled = false;
+    input.focus();
+});
+
 input.addEventListener("keydown", (event) => {
     if (event.key === "Enter" && !event.shiftKey) {
         event.preventDefault();
