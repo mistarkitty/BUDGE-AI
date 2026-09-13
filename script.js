@@ -1,6 +1,8 @@
 const input = document.getElementById("messageInput");
 const sendButton = document.querySelector(".send-button");
 const messages = document.querySelector(".messages");
+const newChatButton = document.querySelector(".new-chat");
+const chatItem = document.querySelector(".chat-item");
 
 const BUDGE_WORKER_URL =
     "https://budge-ai-worker.mistarkitty.workers.dev/chat";
@@ -9,7 +11,6 @@ function addMessage(name, text, type) {
     const message = document.createElement("div");
 
     message.className = `message ${type}-message`;
-
     message.innerHTML = `
         <div class="message-header">
             <span class="message-name">${name}</span>
@@ -80,14 +81,22 @@ async function sendMessage() {
 
 sendButton.addEventListener("click", sendMessage);
 
-const newChatButton = document.querySelector(".new-chat");
-
 newChatButton.addEventListener("click", () => {
     messages.innerHTML = "";
     input.value = "";
     input.disabled = false;
     sendButton.disabled = false;
     input.focus();
+});
+
+chatItem.addEventListener("click", () => {
+    const currentName = chatItem.textContent.trim();
+
+    const newName = prompt("Rename chat:", currentName);
+
+    if (newName && newName.trim()) {
+        chatItem.textContent = newName.trim();
+    }
 });
 
 input.addEventListener("keydown", (event) => {
