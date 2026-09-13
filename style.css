@@ -89,6 +89,7 @@ body {
 
 nav {
     display: flex;
+    align-items: center;
     gap: 5px;
 }
 
@@ -165,6 +166,77 @@ nav {
     box-shadow:
         inset -1px -1px 0 #444,
         inset 1px 1px 0 #080808;
+}
+
+
+/* =========================
+   SETTINGS TALKBOX
+   ========================= */
+
+.settings-wrapper {
+    position: relative;
+}
+
+
+.settings-talkbox {
+    position: absolute;
+
+    left: calc(100% + 10px);
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 180px;
+
+    padding: 10px;
+
+    background: #fff;
+    color: #111;
+
+    border: 1px solid #777;
+    border-radius: 6px;
+
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.4;
+
+    box-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.25);
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition: opacity 0.15s ease;
+
+    z-index: 100;
+}
+
+
+.settings-talkbox::before {
+    content: "";
+
+    position: absolute;
+
+    left: -7px;
+    top: 50%;
+
+    width: 12px;
+    height: 12px;
+
+    background: #fff;
+
+    border-left: 1px solid #777;
+    border-bottom: 1px solid #777;
+
+    transform: translateY(-50%) rotate(45deg);
+}
+
+
+.settings-wrapper:hover .settings-talkbox {
+    opacity: 1;
+    visibility: visible;
 }
 
 
@@ -358,14 +430,18 @@ nav {
 
 .chat-title {
     color: #eee;
+
     font-weight: bold;
+
     font-size: 14px;
 }
 
 
 .chat-status {
     color: #666;
+
     font-size: 10px;
+
     margin-top: 3px;
 }
 
@@ -419,7 +495,6 @@ nav {
     justify-content: space-between;
 
     margin-bottom: 7px;
-
     padding-bottom: 5px;
 
     border-bottom: 1px solid #333;
@@ -429,12 +504,14 @@ nav {
 .message-name {
     font-size: 10px;
     font-weight: bold;
+
     color: #aaa;
 }
 
 
 .message-time {
     font-size: 9px;
+
     color: #555;
 }
 
@@ -484,6 +561,7 @@ textarea {
     outline: none;
 
     font-family: Tahoma, Arial, sans-serif;
+
     font-size: 13px;
 
     box-shadow:
@@ -506,6 +584,7 @@ textarea::placeholder {
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
     margin-top: 7px;
@@ -514,6 +593,7 @@ textarea::placeholder {
 
 .input-info {
     color: #555;
+
     font-size: 9px;
 }
 
@@ -529,11 +609,13 @@ textarea::placeholder {
 
 footer {
     width: calc(100% - 30px);
+
     max-width: 1400px;
 
     margin: 0 auto 12px;
 
     display: flex;
+
     justify-content: space-between;
 
     color: #555;
@@ -588,17 +670,48 @@ footer {
         gap: 10px;
 
         flex-direction: column;
+
         align-items: stretch;
     }
+
 
     nav {
         width: 100%;
     }
 
+
     .nav-button {
         flex: 1;
+
         text-align: center;
     }
+
+
+    .settings-wrapper {
+        flex: 1;
+    }
+
+
+    .settings-wrapper .nav-button {
+        width: 100%;
+    }
+
+
+    .settings-talkbox {
+        left: 50%;
+        top: calc(100% + 10px);
+
+        transform: translateX(-50%);
+    }
+
+
+    .settings-talkbox::before {
+        left: 50%;
+        top: -7px;
+
+        transform: translateX(-50%) rotate(45deg);
+    }
+
 
     .app {
         width: calc(100% - 16px);
@@ -608,9 +721,11 @@ footer {
         min-height: calc(100vh - 145px);
     }
 
+
     .sidebar {
         display: none;
     }
+
 
     footer {
         width: calc(100% - 16px);
