@@ -14,9 +14,6 @@ function addMessage(name, text, type) {
  message.innerHTML = `
     <div class="message-header">
         <span class="message-name">${name}</span>
-    </div>
-
-    <div class="message-content"></div>
 `;
     message.querySelector(".message-content").textContent = text;
 
