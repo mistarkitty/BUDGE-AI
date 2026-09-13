@@ -11,15 +11,13 @@ function addMessage(name, text, type) {
     const message = document.createElement("div");
 
     message.className = `message ${type}-message`;
-    message.innerHTML = `
-        <div class="message-header">
-            <span class="message-name">${name}</span>
-            <span class="message-time">NOW</span>
-        </div>
+ message.innerHTML = `
+    <div class="message-header">
+        <span class="message-name">${name}</span>
+    </div>
 
-        <div class="message-content"></div>
-    `;
-
+    <div class="message-content"></div>
+`;
     message.querySelector(".message-content").textContent = text;
 
     messages.appendChild(message);
